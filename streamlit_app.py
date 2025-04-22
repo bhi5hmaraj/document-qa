@@ -3,8 +3,9 @@
 import streamlit as st
 from openai import OpenAI
 
+logged_in = getattr(st.experimental_user, "is_logged_in", False)
 # ── 1. force user login ───────────────────────────────────────────
-if not st.experimental_user.is_logged_in:
+if not logged_in:
     st.button("Log in with Google", on_click=st.login)   # one‑click OIDC flow&#8203;:contentReference[oaicite:0]{index=0}
     st.stop()
 
